@@ -1,6 +1,6 @@
 # CSST106-CS4B
 ## Presented By: LUCKY OWELL U. MILLARE
-# MP1 - Exploring the Role of Computer Vision and Image Processing in AI
+## MP1 - Exploring the Role of Computer Vision and Image Processing in AI
 https://github.com/user-attachments/assets/ae542371-109e-4cdd-a775-67249f3e88d1
 ## Introduction to Computer Vision and Image Processing
 - Computer vision is a dynamic field within artificial intelligence (AI) that aims to enable machines to interpret and understand visual information from the world, mimicking human visual perception.
