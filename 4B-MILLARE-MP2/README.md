@@ -42,3 +42,38 @@ https://colab.research.google.com/drive/1FmzuXHSPj8iDk9DohsyHHJJOWdimuvH6?usp=sh
     image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
     
     display_image(image, "Original Image")
+    
+### EXERCISE 1. Scaling and Rotation
+    def scale_image(image, scale_factor):
+      height, width = image.shape[:2]
+      scale_img = cv2.resize(image,(int(width * scale_factor), int(height * scale_factor)), interpolation = cv2.INTER_LINEAR)
+      return scale_img
+    
+    def rotate_image(image, angle):
+      height, width = image.shape[:2]
+      center = (width//2, height//2)
+      matrix = cv2.getRotationMatrix2D(center, angle, 1)
+      rotated_image = cv2.warpAffine(image, matrix, (width, height))
+      return rotated_image
+    
+    scaled_image = scale_image(image, 0.5)
+    display_image(scaled_image, "Scaled Image (50%)")
+    
+    rotated_image = rotate_image(image, 45)
+    display_image(rotated_image, "Rotated Image (45°)")
+
+### Exercise 2: Blurring Techniques
+    gussian_blur = cv2.GaussianBlur(image, (11,11), 0)
+    display_image(gussian_blur, "Gussian Blur")
+    
+    median_blur = cv2.medianBlur(image,17)
+    display_image(median_blur, "Median Blur")
+    
+    bilateral_blur = cv2.bilateralFilter(image, 99, 99, 99)
+    display_image(bilateral_blur, "Bilateral Blur")
+
+### **3. Edge Detection using Canny**
+    edge = cv2.Canny(image,100 ,150)
+    display_image(edge, "Canny Edge Detection")
+
+## Problem Solving Session:
