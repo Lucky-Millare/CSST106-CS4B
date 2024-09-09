@@ -77,3 +77,7 @@ https://colab.research.google.com/drive/1FmzuXHSPj8iDk9DohsyHHJJOWdimuvH6?usp=sh
     display_image(edge, "Canny Edge Detection")
 
 ## Problem Solving Session:
+![IMAGE](https://github.com/user-attachments/assets/05a9a055-c10a-4ba8-bac2-4aa1a64845ca)
+
+One of the Challenge we encounter in our lab session is the uploading a image in colab notebook this is because of having a BAYER in the code because of TAB too much in the Laboratory session.
+
