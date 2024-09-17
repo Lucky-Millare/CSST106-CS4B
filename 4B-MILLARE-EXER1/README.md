@@ -363,3 +363,4 @@ https://colab.research.google.com/drive/1FmzuXHSPj8iDk9DohsyHHJJOWdimuvH6?usp=sh
     plt.title("Prewitt Edge")
     
     plt.show()
+![aLL](https://github.com/user-attachments/assets/f41ff96d-e108-4d23-b112-b0f893734387)
