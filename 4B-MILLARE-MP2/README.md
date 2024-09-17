@@ -77,7 +77,7 @@ https://colab.research.google.com/drive/1FmzuXHSPj8iDk9DohsyHHJJOWdimuvH6?usp=sh
     display_image(edge, "Canny Edge Detection")
 
 ## Problem Solving Session:
-One of the Challenge we encounter in our lab session is the uploading a image in colab notebook this is because of having a BAYER in the code because of TAB too much in the Laboratory session.
+One of the Challenge I encounter in our lab session is the uploading a image in colab notebook this is because of having a BAYER in the code because of TAB too much in the Laboratory session.
 
 ![IMAGE](https://github.com/user-attachments/assets/05a9a055-c10a-4ba8-bac2-4aa1a64845ca)
 
@@ -85,4 +85,9 @@ To fix the problem is we have to remove the BAYER in the code so we can upload a
 
 ![dsds](https://github.com/user-attachments/assets/6fcc0ace-64a1-483b-9d63-56b7e8221336)
 
+### Scenario-Based Problems: Solve scenarios where you must choose and apply appropriate image processing techniques
+In the Exercise 1 Hand on Exploration we following the step of our professor instructed in the TV screen the problem I encounter in the one of the Image processing Techniques that been instructing is in the Scaling and Rotation. The problem I encounter in that Part is I didn’t copy properly the code the professor instructed because I TAB it without knowing the code is not the same so when I run the code there is a error.
+![Picture1](https://github.com/user-attachments/assets/d2bdd697-a6ec-4fe2-95f9-4632cd95b4be)
 
+To solve the problem I try to compare my code to my seatmates and learn what is wrong in my code the problem is in the scale_img I do not have this (int(width * scale_factor) that will be used in to calculate the new width of the image after scaling. After I fix it the error is gone.
+![Picture2](https://github.com/user-attachments/assets/b334f2ca-2519-47ae-884c-62df15931ce0)
