@@ -147,3 +147,4 @@
     plt.show()
 ![exer43](https://github.com/user-attachments/assets/ca8ba8c5-384b-48f3-b520-5f04210f4f81)
 
+# Traditional vs. Deep Learning Object Detection Comparison
