@@ -141,4 +141,5 @@
 ![SURFF](https://github.com/user-attachments/assets/92ddcf8a-64c8-4f22-a3d5-3b9f81a6ff31)
 ![orbf](https://github.com/user-attachments/assets/f353acba-fa16-40a8-8bb1-8c3127c9f699)
 ![al](https://github.com/user-attachments/assets/e19a0e21-c34d-4769-8774-9b1a8ea6e629)
-
+## EXPLANATION
+In this project, I implement feature extraction and object detection using various algorithms, including SIFT, SURF, and ORB, to match keypoints between two images. After loading and converting the images to grayscale, I initialize each detector, extract keypoints and descriptors, and then use both Brute-Force and FLANN matchers to find matches between the features. Finally, I compute the homography matrix using good matches from SIFT to align the images and visualize the results, showcasing the effectiveness of each method in detecting and matching features.
