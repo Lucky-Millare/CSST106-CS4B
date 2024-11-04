@@ -8,9 +8,11 @@
     import urllib.request
     import tarfile
     import os
+    import time
     from skimage.feature import hog
     from sklearn import svm
     from sklearn.model_selection import train_test_split
+    from sklearn.metrics import accuracy_score
     from google.colab.patches import cv2_imshow
     from google.colab import drive
     
@@ -148,3 +150,81 @@
 ![exer43](https://github.com/user-attachments/assets/ca8ba8c5-384b-48f3-b520-5f04210f4f81)
 
 # Traditional vs. Deep Learning Object Detection Comparison
+### INSTALL DEPENDENCIES
+    !pip install tensorflow==2.12.0 tensorflow-hub==0.13.0
+### LOAD THE IMAGE
+    image_path = '/content/drive/MyDrive/home.jpg'
+    image = cv2.imread(image_path)
+### RESIZE THE IMAGE
+    resized_image = cv2.resize(image, (416, 416))
+### CONVERT TO GRAYSCALE
+    gray_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
+### HOG-SVM IMPLEMENTATION
+    # Extract HOG features
+    start_time = time.time()
+    # Remove the 'multichannel' argument as it's not needed for grayscale images
+    hog_features, hog_image = hog(gray_image, pixels_per_cell=(8, 8),
+                                  cells_per_block=(2, 2), visualize=True)
+    
+    # Use a simple SVM model (This is a placeholder; in practice, a trained SVM model would be used)
+    clf = svm.SVC(kernel='linear')
+    
+    # Measure HOG-SVM processing time
+    hog_svm_time = time.time() - start_time
+    print(f"HOG-SVM Detection Time: {hog_svm_time:.4f} seconds")
+### YOLO MODEL IMPLEMENTATION
+    yolo_net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
+    with open("coco.names", "r") as f:
+        class_names = [line.strip() for line in f.readlines()]
+    
+    # Prepare the image for YOLO
+    blob = cv2.dnn.blobFromImage(resized_image, 1/255, (416, 416), (0, 0, 0), swapRB=True, crop=False)
+    yolo_net.setInput(blob)
+
+    # YOLO forward pass
+    start_time = time.time()
+    layer_names = yolo_net.getLayerNames()
+    output_layers = [layer_names[i - 1] for i in yolo_net.getUnconnectedOutLayers()]
+    outs = yolo_net.forward(output_layers)
+    yolo_time = time.time() - start_time
+
+    # Process YOLO outputs
+    for out in outs:
+        for detection in out:
+            scores = detection[5:]
+            class_id = np.argmax(scores)
+            confidence = scores[class_id]
+            if confidence > 0.5:
+                center_x = int(detection[0] * resized_image.shape[1])
+                center_y = int(detection[1] * resized_image.shape[0])
+                w = int(detection[2] * resized_image.shape[1])
+                h = int(detection[3] * resized_image.shape[0])
+    
+                # Calculate bounding box coordinates
+                x = int(center_x - w / 2)
+                y = int(center_y - h / 2)
+    
+                # Draw bounding box and label
+                label = f"{class_names[class_id]}: {confidence:.2f}"
+                cv2.rectangle(resized_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                cv2.putText(resized_image, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+### DISPLAY THE IMAGE, PERFORMANCE COMPARISON
+    plt.figure(figsize=(10, 10))
+    plt.subplot(1, 2, 1)
+    plt.imshow(hog_image)
+    plt.title('HOG-SVM Image')
+    plt.axis('off')
+    
+    plt.subplot(1, 2, 2)
+    plt.imshow(resized_image)
+    plt.title('YOLO Detected Image')
+    plt.axis('off')
+    
+    plt.show()
+    
+    # Accuracy comparison may require a ground-truth dataset, which is simplified here.
+    # For time comparison:
+    print(f"HOG-SVM Time: {hog_svm_time:.4f}s vs YOLO Time: {yolo_time:.4f}s")
+![exer44](https://github.com/user-attachments/assets/b1494469-3f93-4ca8-8d3b-044243f7c228)
+
+### EXPLANATION
