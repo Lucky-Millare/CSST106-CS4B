@@ -228,3 +228,5 @@
 ![exer44](https://github.com/user-attachments/assets/b1494469-3f93-4ca8-8d3b-044243f7c228)
 
 ### EXPLANATION
+
+In this exercise, I implemented three different object detection techniques: HOG (Histogram of Oriented Gradients), YOLO (You Only Look Once), and SSD (Single Shot MultiBox Detector). First, I utilized HOG to extract features from a grayscale image, which allows for visualizing the gradients that help in detecting objects. Next, I set up the YOLO model, downloading necessary weights and configuration files, and processed an image to detect objects using a deep learning approach. Lastly, I employed SSD with a pre-trained model to recognize objects in an image and visualize the results with bounding boxes. The exercise culminates in a performance comparison of traditional HOG-SVM detection versus deep learning methods like YOLO and SSD, highlighting the strengths of each approach.
