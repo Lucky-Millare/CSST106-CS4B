@@ -146,3 +146,4 @@
 ![WATER](https://github.com/user-attachments/assets/d1351a58-4cb2-48fc-8416-a117e03614ae)
 
 ## EXPLANATION
+In this exercise, I followed the provided code to implement various advanced feature extraction and image processing techniques using OpenCV. I started with Harris corner detection, loading an image and converting it to grayscale before applying the corner detection algorithm to highlight significant corners in the image. Next, I explored the HOG (Histogram of Oriented Gradients) feature extraction method to capture gradient orientations, followed by the FAST keypoint detection algorithm, which allowed me to identify keypoints in the image visually. I then performed feature matching using ORB and the FLANN matcher, effectively identifying matching features between two images. Finally, I applied the watershed algorithm for image segmentation, marking distinct regions in the image and visualizing the segmented results.
